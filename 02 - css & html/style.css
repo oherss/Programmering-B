@@ -1,8 +1,58 @@
 html, body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  width:100vw;
+  height: 100vw;
+  overflow: hidden;
 }
 
+.page{
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: -100vw;
+  transition: all .5s .5s ease-in-out;
+}
+.show{
+  left:0;
+}
+#Page1
+{
+  background-color: orange;
+}
+#Page2
+{
+  background-color: red;
+}
+#Page3
+{
+  background-color: purple;
+}
+#Page4
+{
+  background-color: pink;
+}
 canvas {
   display: block;
+}
+
+.menu{
+  position: fixed;
+  height: 12vh;
+  width: 100vw;
+  background: black;
+  bottom: 0;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.menuitem{
+  display: grid;
+  place-items: center;
+  border: 1px solid grey;
+  cursor: pointer;
 }
