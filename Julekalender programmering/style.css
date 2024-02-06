@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+    color: rgb(255, 0, 0);
+    font-size: 5vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+body {
+    background-image: url(Pictures/christmas.jpg);
+    background-size: 70% 100%;
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    margin-left: 0px;
+
+}
+
+#calendar{
+    
+    width:100vw;
+    height:auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(18%, 1fr));
+    gap:1rem; 
+    
+   
+}
+
+#calendar button{
+    width:100%;
+    height:16vh;
+    font-size: 16vh;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}

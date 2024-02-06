@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Julekalender 2023</h1>
+    <div id="calendar"></div>
+    <script>
+        // An array of objects representing each day in the calendar
+        const calendarData = [
+            { date: '2023-12-01', content: './1st - paint'},
+            { date: '2023-12-02', content: './2nd - snake' },
+            { date: '2023-12-03', content: './3rd - tetris' },
+            { date: '2023-12-04', content: './4th - Minecraft' },
+            { date: '2023-12-05', content: './5th - flappyBird' },
+            { date: '2023-12-06', content: './6th - Minesweeper' },
+            { date: '2023-12-07', content: './7th - Hangman' },
+            { date: '2023-12-08', content: 'Content for day 8' },
+            { date: '2023-12-09', content: 'Content for day 9' },
+            { date: '2023-12-10', content: 'Content for day 10' },
+            { date: '2023-12-11', content: 'Content for day 11' },
+            { date: '2023-12-12', content: 'Content for day 12' },
+            { date: '2023-12-13', content: 'Content for day 13' },
+            { date: '2023-12-14', content: 'Content for day 14' },
+            { date: '2023-12-15', content: 'Content for day 15' },
+            { date: '2023-12-16', content: 'Content for day 16' },
+            { date: '2023-12-17', content: 'Content for day 17' },
+            { date: '2023-12-18', content: 'Content for day 18' },
+            { date: '2023-12-19', content: 'Content for day 19' },
+            { date: '2023-12-20', content: 'Content for day 20' },
+            { date: '2023-12-21', content: 'Content for day 21' },
+            { date: '2023-12-22', content: 'Content for day 22' },
+            { date: '2023-12-23', content: 'Content for day 23' },
+            { date: '2023-12-24', content: 'Content for day 24' },
+            { date: '2023-12-25', content: 'Content for day 25' },
+        ];
+
+        // Get the element with the ID "calendar"
+        const calendarEl = document.getElementById('calendar');
+
+        // Loop through each day in the calendarData array
+        calendarData.forEach(day => {
+            // Create a new button element
+            const button1 = document.createElement('button');
+
+            // Set the text content of the button to the day of the month
+            button1.textContent = day.date.slice(-2);
+
+            // Disable the button if the date is in the future
+            button1.disabled = new Date(day.date) > new Date();
+ 
+            // Set the border radius and background color of the button
+            button1.style.borderRadius = '2rem';
+            button1.style.backgroundImage = button1.disabled ? 'url(Pictures/Sproxxy/Blep.png)' : 'url(Pictures/Sproxxy/A.png)';
+            button1.style.backgroundSize = '40% 100%';
+            button1.style.backgroundRepeat = 'no-repeat';
+
+            // Add an event listener to the button that displays the content for the day
+            button1.addEventListener('click', () => {
+                window.location.href = (day.content);
+            });
+
+            // Add the button to the calendar element
+            calendarEl.appendChild(button1);
+        });
+    </script>
+    
+</body>
+</html>
