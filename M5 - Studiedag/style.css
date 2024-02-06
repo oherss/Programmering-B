@@ -1,0 +1,13 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+.info{
+  position:fixed;
+  z-index:100;
+  top:0;
+}
