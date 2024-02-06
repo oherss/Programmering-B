@@ -4,7 +4,7 @@ let colors = ['red', 'lightblue', 'hotpink', 'darkgreen', 'grey']
 let names = []
 let numobjects = 40
 
-
+//Variables defined
 
 function preload(){
   names = loadStrings('first-names.txt');
