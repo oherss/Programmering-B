@@ -29,7 +29,7 @@ for (let i = 0; i < numobjects; i++) {
     y: random(height),
     size: random(width/12,width/10),
     name: random(names),
-    color: random(colors),
+    color: color(random(255),random(255),random(255), random(50,255)),
     speedx: random(1,10),
     speedy: random(1,10)
     
