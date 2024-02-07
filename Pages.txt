@@ -1,0 +1,9 @@
+./01- github
+./02 - css & html
+./Loops opgave
+./Loops opgave 2
+./Paintprogram
+./Julekalender programmering
+./JSON 1
+./JSON 2
+./M5 - Studiedag
