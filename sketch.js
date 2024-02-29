@@ -2,7 +2,7 @@ let Links = []
 
 
 function preload(){
-  Links = loadStrings('Pages.txt');
+  Links = loadStrings('subdirectories.txt');
 }
 
 function setup() {
