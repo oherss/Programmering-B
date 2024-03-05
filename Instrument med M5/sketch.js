@@ -57,13 +57,11 @@ function setup() {
     if(sensorData == "Waiting" && topic == 'SynthDirectionServer'){
       connection.publish('SynthDirectionServer','Ready')
     }
-
     //Når vi modtager en besked fra M5'eren som siger at den sender data, viser vi i vores UI at vi har oprettet forbindelse til Joysticket.
     if(sensorData == "Connected" && topic == 'SynthDirectionServer'){
       infoDiv.html("Joystick forbundet")  
       JoyConn = true  
     }
-
   })
   //vi abonnerer på et emne - her "SynthHeightServer"
   //Dette emne er en kommunikation mellem vores afstandssensor og vores program her, som fortæller vores enheder om de er forbundet.
@@ -182,7 +180,6 @@ function draw() {
   if(DistConn){
     fill(0,255,0)
     square(160,45,20)
-    
   }
   else{
     fill(255,0,0)
