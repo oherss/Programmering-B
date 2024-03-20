@@ -15,13 +15,17 @@ let ScreenRes = {
 } 
 
 let Levels = []
+let LevelFile = []
 
 let CurrentLevel = 1
 let BlocksInLevel = []
 
 let PlatformSpeed = 10
 
-//Objects
+let lives
+let CurrentLives
+
+  //Objects
 
 
 //Ball gets x and y coordinates as well as a radius and a speed.
@@ -30,6 +34,8 @@ let ball = {
   y: 0,
   r: 0,
   speed: 0,
+  directionx: 0,
+  directiony: 0,
   show(){
     circle(this.x,this.y,this.r)
   }
@@ -48,7 +54,7 @@ let platform = {
 }
 
 function preload(){
-  Levels = loadStrings('Levels.txt')
+  LevelFile = loadStrings('Levels.txt')
 }
 
 
@@ -57,8 +63,20 @@ function setup() {
  
   console.log("Parsing Levels into obects...")
   console.log(Levels)
-  for (let i = 0; i < Levels.length; i++) {
-    Levels[i] = JSON.parse(Levels[i])
+  for (let i = 0; i < LevelFile.length; i++) {
+    let obj = JSON.parse(LevelFile[i])
+    console.log(obj)
+    if(obj.Type == "LevelInfo"){
+      lives = obj.Lives
+    }
+
+
+
+
+    if(obj.Type == "Target"){
+      Levels[i-2] = obj
+    }
+
   }
   GenerateLevel()
 console.log(Levels)
@@ -96,6 +114,11 @@ function draw() {
   background(220);
   ball.show()
   platform.show()
+  CeckCollision()
+  BallPhysics()
+  
+
+
 
   if(keyIsPressed){
     console.log("key is pressed: " + key)
@@ -135,12 +158,49 @@ else if(!ScreenRes.auto){
   createCanvas(ScreenRes.w, ScreenRes.h);
 }
 
+function CeckCollision(){
+  if(ball.x + ball.r > ScreenRes.w){
+    console.log("Hit right wall")
+    ball.directionx = -ball.directionx
+    if(ball.directiony == 0)
+    ball.directiony = ball.directiony + random(-1,1)
+  }
+
+  if(ball.x - ball.r<0){
+    console.log("Hit left wall")
+    ball.directionx = -ball.directionx
+    if(ball.directiony == 0)
+    ball.directiony = ball.directiony + random(-1,1)
+  }
+
+  if(ball.y - ball.r < 0){
+      console.log("hit cieling")
+      ball.directiony = -ball.directiony
+  }
+
+  
+  if(ball.y + ball.r >= platform.y - platform.h/2 && ball.y - ball.r <= platform.y - platform.h/2 && ball.x + ball.r < platform.x + platform.w/2 && ball.x - ball.r > platform.x - platform.w/2){
+      console.log("hit platform")
+      ball.directiony = -ball.directiony
+  }
+
+  if(ball.y + ball.r > ScreenRes.h){
+    CurrentLives--
+    console.log("Ball lost... Lives left: " + CurrentLives)
+  }
+}
+
+function BallPhysics(){
+  ball.x = ball.x + ball.directionx * ball.speed
+  ball.y = ball.y + ball.directiony * ball.speed
+}
 
 function GenerateLevel(){
   //Makes a new canvas at the desired resolution.
   createCanvas(ScreenRes.w, ScreenRes.h);
 
-  
+  CurrentLives = lives
+
   for (let i = 0; i < Levels.length; i++) {
     if(Levels[i].Level == CurrentLevel){
       BlocksInLevel.push(Levels[i])
@@ -156,10 +216,7 @@ function GenerateLevel(){
     BlocksInLevel[i].w = ScreenRes.w/14
     BlocksInLevel[i].h = ScreenRes.h/20
   }
-  //Calculate size of ball from screen resolution.
-  ball.r = ScreenRes.h/40
-  console.log("Calculated ball:")
-  console.log(ball)
+  
   //Platform gets x and y coordinates as well and width and height based on screen resolution.
   
    platform.x = ScreenRes.w/2
@@ -169,7 +226,15 @@ function GenerateLevel(){
    console.log("Calculated Platform:")
    console.log(platform)
  
-  
+  //Calculate size of ball from screen resolution.
+  ball.r = ScreenRes.h/40
+  ball.x = platform.x
+  ball.y = platform.y - (ScreenRes.h/8)
+  ball.speed = (ScreenRes.h + ScreenRes.w)/2 /250
+  ball.directionx = 1
+  ball.directiony = 0
+  console.log("Calculated ball:")
+  console.log(ball)
 
 
 }
