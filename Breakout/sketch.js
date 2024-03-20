@@ -25,6 +25,10 @@ let PlatformSpeed = 10
 let lives
 let CurrentLives
 
+let BlocksLeft
+
+let IsPlaying = false
+
   //Objects
 
 
@@ -78,7 +82,7 @@ function setup() {
     }
 
   }
-  GenerateLevel()
+  
 console.log(Levels)
 
   //Checks if resolution is in auto mode, and sets the resolution to either the manual input or the automatic resolution.
@@ -93,7 +97,7 @@ else if(!ScreenRes.auto){
   createCanvas(ScreenRes.w, ScreenRes.h);
 
   console.log(ScreenRes)
-
+  GenerateLevel()
 
   
   
@@ -111,36 +115,50 @@ function keyPressed(LEFT_ARROW) {
 
 
 function draw() {
-  background(220);
-  ball.show()
-  platform.show()
-  CeckCollision()
-  BallPhysics()
   
 
+  if(IsPlaying){ //Only render gameplay if we're playing the game
+    background(220);
+    ball.show() //Renders the ball
+    platform.show() //Renders the platform
+    CeckCollision() //Checks collision of all objects, and calculates their new directions
+    BallPhysics() //Calculates the movement of the ball
 
+  //Platform movement
 
-  if(keyIsPressed){
-    console.log("key is pressed: " + key)
-    if(key == "ArrowLeft" && platform.x > platform.w/2)
-    {
-      platform.x = platform.x - (ScreenRes.w/100)
+    if(keyIsPressed){
+      console.log("key is pressed: " + key)
+      if(key == "ArrowLeft" && platform.x > platform.w/2)
+      {
+        platform.x = platform.x - (ScreenRes.w/100)
+      }
+      if(key == "ArrowRight" && platform.x < ScreenRes.w-platform.w/2)
+      {
+        platform.x = platform.x + (ScreenRes.w/100)
+      }
     }
-    if(key == "ArrowRight" && platform.x < ScreenRes.w-platform.w/2)
+
+    //Drawing blocks (Targets)
+    BlockCount = BlocksInLevel.length
+    for (let i = 0; i < BlocksInLevel.length; i++) {
+      obj = BlocksInLevel[i]
+      if(obj.Hit == "false"){
+        fill(obj.R,obj.G,obj.B)
+        rect(obj.x,obj.y,obj.w,obj.h)
+        fill(255)
+      }
+      else if(obj.Hit)
+      {
+        BlockCount--
+      }
+    }
+
+    if(BlockCount == 0)
     {
-      platform.x = platform.x + (ScreenRes.w/100)
+      console.log("you win :3")
+      LevelWon()
     }
   }
-
-
-
-  for (let i = 0; i < BlocksInLevel.length; i++) {
-    obj = BlocksInLevel[i]
-    fill(obj.R,obj.G,obj.B)
-    rect(obj.x,obj.y,obj.w,obj.h)
-    fill(255)
-  }
-  
 }
 
 function ChangeSettings(){
@@ -159,40 +177,92 @@ else if(!ScreenRes.auto){
 }
 
 function CeckCollision(){
+
+  //Check collision with walls
   if(ball.x + ball.r > ScreenRes.w){
     console.log("Hit right wall")
     ball.directionx = -ball.directionx
     if(ball.directiony == 0)
-    ball.directiony = ball.directiony + random(-1,1)
+      ball.directiony = ball.directiony + random(-1,1)
   }
 
   if(ball.x - ball.r<0){
     console.log("Hit left wall")
     ball.directionx = -ball.directionx
     if(ball.directiony == 0)
-    ball.directiony = ball.directiony + random(-1,1)
+      ball.directiony = ball.directiony + random(-1,1)
   }
+
+  //check collision with ceiling
 
   if(ball.y - ball.r < 0){
-      console.log("hit cieling")
+      console.log("hit ceiling")
       ball.directiony = -ball.directiony
+      if(ball.directionx == 0)
+        ball.directionx = ball.directionx + random(-1,1)
   }
 
+  //Check collision with platform
   
   if(ball.y + ball.r >= platform.y - platform.h/2 && ball.y - ball.r <= platform.y - platform.h/2 && ball.x + ball.r < platform.x + platform.w/2 && ball.x - ball.r > platform.x - platform.w/2){
       console.log("hit platform")
       ball.directiony = -ball.directiony
+      if(ball.directionx == 0)
+        ball.directionx = ball.directionx + random(-1,1)
   }
+
+  //Check if ball is lost (Collision with bottom of screen), and then remove a life, untill no lives are left, then the game over screen should be shown
 
   if(ball.y + ball.r > ScreenRes.h){
     CurrentLives--
+    if(CurrentLives == 0)
+    GameOver()
+    ball.x = platform.x
+    ball.y = platform.y - (ScreenRes.h/8)
+    ball.directionx = 0
+    ball.directiony = 1
     console.log("Ball lost... Lives left: " + CurrentLives)
+  }
+
+
+
+  for (let i = 0; i < BlocksInLevel.length; i++) {
+    obj = BlocksInLevel[i]
+    if(obj.Hit == "false"){
+      if(ball.y + ball.r >= obj.y - obj.h/2 && ball.y - ball.r <= obj.y - obj.h/2 && ball.x - ball.r < obj.x + obj.w/2 && ball.x + ball.r > obj.x - obj.w/2){
+        console.log("hit Block")
+        obj.Hit = true
+        ball.directiony = -ball.directiony
+        if(ball.directionx == 0)
+          ball.directionx = ball.directionx + random(-1,1)
+      }
+    }
   }
 }
 
 function BallPhysics(){
   ball.x = ball.x + ball.directionx * ball.speed
   ball.y = ball.y + ball.directiony * ball.speed
+}
+
+function GameOver(){
+  IsPlaying = false
+  createCanvas(ScreenRes.w, ScreenRes.h)
+  background(220);
+  fill(0)
+  textAlign(CENTER,CENTER)
+  textSize(ScreenRes.w/10)
+  text("Game Over", ScreenRes.w/2,ScreenRes.h/2)
+}
+
+function LevelWon(){
+  IsPlaying = false
+  createCanvas(ScreenRes.w, ScreenRes.h)
+  background(220);
+  fill(0)
+  textAlign(CENTER,CENTER)
+  textSize(ScreenRes.w/10)
+  text("You Win", ScreenRes.w/2,ScreenRes.h/2)
 }
 
 function GenerateLevel(){
@@ -204,12 +274,14 @@ function GenerateLevel(){
   for (let i = 0; i < Levels.length; i++) {
     if(Levels[i].Level == CurrentLevel){
       BlocksInLevel.push(Levels[i])
-      //BlocksInLevel[i]['Show()'] = '{fill(this.R,this.G,this.B);rect(this.x,this.y,this.w,this.h)}'
+      BlocksInLevel[i]['Hit'] = 'false'
       console.log(BlocksInLevel[i])
     }
     
   }
   
+  BlocksLeft = BlocksInLevel.length
+
   for (let i = 0; i < BlocksInLevel.length; i++) {
     BlocksInLevel[i].x = map(BlocksInLevel[i].x,0,100,0,ScreenRes.w)
     BlocksInLevel[i].y = map(BlocksInLevel[i].y,0,100,0,ScreenRes.h)
@@ -231,10 +303,10 @@ function GenerateLevel(){
   ball.x = platform.x
   ball.y = platform.y - (ScreenRes.h/8)
   ball.speed = (ScreenRes.h + ScreenRes.w)/2 /250
-  ball.directionx = 1
-  ball.directiony = 0
+  ball.directionx = 0
+  ball.directiony = 1
   console.log("Calculated ball:")
   console.log(ball)
 
-
+  IsPlaying = true //Starts the game rendering 
 }
