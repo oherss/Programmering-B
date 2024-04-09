@@ -97,13 +97,57 @@ else if(!ScreenRes.auto){
   createCanvas(ScreenRes.w, ScreenRes.h);
 
   console.log(ScreenRes)
-  GenerateLevel()
-
+  //GenerateLevel()
+  HomePage()
   
   
 
 
 }
+
+function HomePage (){
+  createCanvas(ScreenRes.w,ScreenRes.h)
+  background(220)
+  textSize(50)
+  fill(0)
+  textAlign(CENTER)
+  text("BREAKOUT - The Knockoff", ScreenRes.w/2,ScreenRes.h/5)
+  textSize(30)
+  text("Made by Sproxxy 2024 v0.1", ScreenRes.w/2,ScreenRes.h/4)
+
+  //Start button
+    StartButton = createButton("Start Game")
+    StartButton.style('width',"50%")
+    StartButton.style('height',"20%")
+
+    StartButton.position(ScreenRes.w/4,ScreenRes.h/2 )
+
+  //Levels Button
+    LevelsButton = createButton ("Level Select")
+    LevelsButton.style('width',"20%")
+    LevelsButton.style('height',"10%")
+
+    LevelsButton.position(ScreenRes.w/4,ScreenRes.h/1.4 )
+
+  //Settings Button
+    SettingsButton = createButton ("Settings")
+    SettingsButton.style('width',"20%")
+    SettingsButton.style('height',"10%")
+
+    SettingsButton.position(ScreenRes.w/1.82,ScreenRes.h/1.4 )
+
+
+
+
+    StartButton.mouseClicked(()=>{
+  
+      GenerateLevel()
+    })
+}
+
+
+
+
 
 //Input handling:
 /*
@@ -246,6 +290,7 @@ function BallPhysics(){
 }
 
 function GameOver(){
+  StartButton.show()
   IsPlaying = false
   createCanvas(ScreenRes.w, ScreenRes.h)
   background(220);
@@ -256,6 +301,7 @@ function GameOver(){
 }
 
 function LevelWon(){
+  StartButton.show()
   IsPlaying = false
   createCanvas(ScreenRes.w, ScreenRes.h)
   background(220);
@@ -266,9 +312,16 @@ function LevelWon(){
 }
 
 function GenerateLevel(){
+
+  StartButton.hide()
+  SettingsButton.hide()
+  LevelsButton.hide()
+
+
+
   //Makes a new canvas at the desired resolution.
   createCanvas(ScreenRes.w, ScreenRes.h);
-
+  BlocksInLevel = []
   CurrentLives = lives
 
   for (let i = 0; i < Levels.length; i++) {
@@ -279,15 +332,16 @@ function GenerateLevel(){
     }
     
   }
-  
-  BlocksLeft = BlocksInLevel.length
-
   for (let i = 0; i < BlocksInLevel.length; i++) {
     BlocksInLevel[i].x = map(BlocksInLevel[i].x,0,100,0,ScreenRes.w)
     BlocksInLevel[i].y = map(BlocksInLevel[i].y,0,100,0,ScreenRes.h)
     BlocksInLevel[i].w = ScreenRes.w/14
     BlocksInLevel[i].h = ScreenRes.h/20
   }
+  console.log(BlocksInLevel)
+  BlocksLeft = BlocksInLevel.length
+
+  
   
   //Platform gets x and y coordinates as well and width and height based on screen resolution.
   

@@ -1,0 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+}
+
+canvas {
+  display: block;
+}
+
+img {
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+  width: 15%;
+}

@@ -1,0 +1,2 @@
+{"UserID":"1","UserName":"Brugernavn","PassWord":"Adgangskode"}
+{"UserID":"2","UserName":"Isak","PassWord":"Lagkage"}

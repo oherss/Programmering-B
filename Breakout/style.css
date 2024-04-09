@@ -6,3 +6,9 @@ html, body {
 canvas {
   display: block;
 }
+
+StartButton {
+  width: 50%;
+  height: 20%;
+  margin: auto; 
+}
