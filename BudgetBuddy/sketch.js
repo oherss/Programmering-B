@@ -1,11 +1,15 @@
 let canvas
 
+let UserIndex
+let BankIndex
 let Users = []
 let UsersFile = []
+let BankFile =[]
+let Bank = []
 
 function preload(){
   UsersFile = loadStrings('Users.txt')
-  
+  BankFile = loadStrings('TotallyLegitBankAPI.txt')
 }
 
 function setup() {
@@ -13,6 +17,10 @@ function setup() {
   for (let i = 0; i < UsersFile.length; i++) {
     Users[i] = JSON.parse(UsersFile[i])
   }
+  for (let i = 0; i < BankFile.length; i++) {
+    Bank[i] = JSON.parse(BankFile[i])
+  }
+  console.log(Bank)
   console.log(Users)
 
 
@@ -66,8 +74,8 @@ function WelcomeScreen (){
     let NewUserName = UserNameInputLogin.value().toString()
     let NewPassWord = UserPassInputLogin.value().toString()
     let CorrectPassword
-    let UserIndex
     let IsUser = false
+    
 
     console.log(NewUserName)
     for (let i = 0; i < Users.length; i++) {
@@ -80,15 +88,32 @@ function WelcomeScreen (){
     }
     if(!IsUser){
       console.log("No such user found")
+      fill(170)
+      rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/2)
+      fill(0)
+      textSize(canvas.width/50)
+      text("Log ind",canvas.width/2 - canvas.width/5,canvas.height/1.8 - canvas.height/5 )
       text("Bruger findes ikke",canvas.width/2 - canvas.width/5,canvas.height/1.2 - canvas.height/11)
+      
     }
     else if(NewPassWord != CorrectPassword){
       console.log("Wrong Password for user: " + Users[UserIndex].UserID)
+      fill(170)
+      rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/2)
+      fill(0)
+      textSize(canvas.width/50)
+      text("Log ind",canvas.width/2 - canvas.width/5,canvas.height/1.8 - canvas.height/5 )
       text("Forkert adgangskode",canvas.width/2 - canvas.width/5,canvas.height/1.2 - canvas.height/11)
     }
     else if(NewPassWord == CorrectPassword){
       console.log("Correct password for user: " + Users[UserIndex].UserID)
+      fill(170)
+      rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/2)
+      fill(0)
+      textSize(canvas.width/50)
+      text("Log ind",canvas.width/2 - canvas.width/5,canvas.height/1.8 - canvas.height/5 )
       text("Velkommen tilbage",canvas.width/2 - canvas.width/5,canvas.height/1.2 - canvas.height/11)
+      MainPage()
     }
   })
 
@@ -126,3 +151,58 @@ function WelcomeScreen (){
 
       })
 }
+
+function MainPage(){
+  //Baggrund tegnes
+  background(100);
+  //UI fra login skærm skjules
+  UserNameInputNew.hide()
+  UserPassInputNew.hide()
+  UserNameInputLogin.hide()
+  UserPassInputLogin.hide()
+  SignUpButton.hide()
+  LoginButton.hide()
+  ForgotPass.hide()
+  //Data hentes fra brugerens bank
+  for (let i = 0; i < Bank.length; i++) {
+    if(Bank[i].UserID == UserIndex)
+    BankIndex = i
+  }
+  for (let i = 1; i < parseInt(Bank[0].AntalIntægter)+1; i++) {
+    console.log(Bank[i])
+    
+  }
+
+
+
+  //Nyt UI tegnes
+  UserNameField = select('#UserNameText')
+  UserNameField.html(Users[UserIndex].UserName)
+  //Indtægter
+  IncomeText = createElement("h1","Indtægter")
+  IncomeText.position(canvas.width/4.3,canvas.height/4)
+  fill(170)
+    rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    fill(0)
+    line(canvas.width/2 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/2 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
+    RegularIncomes = createElement("h4","Faste indtægter")
+    RegularIncomes.position(canvas.width/2 - canvas.width/5-canvas.width/12,canvas.height/1.7-canvas.height/4 )
+    line(canvas.width/2 - canvas.width/5-canvas.width/6/2,canvas.height/1.6-canvas.height/3.5,canvas.width/2 - canvas.width/5+canvas.width/6/2,canvas.height/1.6-canvas.height/3.5)
+  //Udgifter
+  ExpensesText = createElement("h1","Udgifter")
+  ExpensesText.position(canvas.width/1.95,canvas.height/4)
+  fill(170)
+    rect(canvas.width/1.3 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    fill(0)
+    line(canvas.width/1.3 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/1.3 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
+
+  //Budget
+  BudgetText = createElement("h1","Budget")
+  BudgetText.position(canvas.width/1.3,canvas.height/4)
+  fill(170)
+    rect(canvas.width/0.98 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    fill(0)
+    line(canvas.width/0.98 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/0.98 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
+
+
+  }

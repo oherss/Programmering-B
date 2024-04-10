@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .float-left {
+          float: left;
+          margin: 10px;
+      }
+
+      .float-right {
+          float: right;
+          margin: 10px;
+      }
+  </style>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,7 +26,8 @@
 
   <body>
     
-    <img src = "Logo 1.svg" alt="Budget Buddy"/>
+    <img src = "Logo 1.svg" alt="Budget Buddy" class="float-left"/>
+    <button id="UserNameText" class="float-right">Ikke logget ind</button>
     <script src="sketch.js"></script>
   </body>
 </html>

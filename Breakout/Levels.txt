@@ -1,4 +1,4 @@
-{"Type":"FileInfo","Levels":"1","Maker":"Sproxxy"}
+{"Type":"FileInfo","Levels":"2","Maker":"Sproxxy"}
 {"Type":"LevelInfo","Level":"1","Targets":"5","Lives":"3","Name":"Original","Difficulty":"Easy","Maker":"Sproxxy"}
 {"Type":"Target","Level":"1", "x": "10", "y":"20","w":"0","h":"0","R":"255","G":"0","B":"0"}
 {"Type":"Target","Level":"1", "x": "20", "y":"20","w":"0","h":"0","R":"255","G":"0","B":"255"}

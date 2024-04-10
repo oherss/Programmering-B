@@ -1,0 +1,1 @@
+{"UserID":"1","AntalIntægter":"2","Netto":"3673.69","SU":"658","AntalUdgifter":"3","Patreon":"93","Opsparing":"1000","Investering":"500"}
