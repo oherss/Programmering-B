@@ -1,6 +1,8 @@
 ./01- github
 ./02 - css & html
 ./Breakout
+./BudgetBuddy
+./BudgetBuddy2.0
 ./Instrument med M5
 ./JSON 1
 ./JSON 2

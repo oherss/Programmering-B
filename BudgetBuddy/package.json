@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jquery-csv": "^1.0.21",
+    "pg": "^8.11.5"
+  }
+}

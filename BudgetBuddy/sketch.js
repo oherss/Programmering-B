@@ -1,4 +1,8 @@
 let canvas
+let csv = import('./node_modules/jquery-csv/src/jquery.csv.js')
+//let fs = import('fs')
+
+let BankFileNew =[]
 
 let UserIndex
 let BankIndex
@@ -6,8 +10,10 @@ let Users = []
 let UsersFile = []
 let BankFile =[]
 let Bank = []
+let CurrentUserBank = []
 
 function preload(){
+  
   UsersFile = loadStrings('Users.txt')
   BankFile = loadStrings('TotallyLegitBankAPI.txt')
 }
@@ -165,15 +171,16 @@ function MainPage(){
   ForgotPass.hide()
   //Data hentes fra brugerens bank
   for (let i = 0; i < Bank.length; i++) {
-    if(Bank[i].UserID == UserIndex)
-    BankIndex = i
-  }
-  for (let i = 1; i < parseInt(Bank[0].AntalIntægter)+1; i++) {
-    console.log(Bank[i])
-    
+
+    console.log("Current User ID: "+  Users[UserIndex].UserID+ " Current bank ID: "+Bank[i].UserID)
+    if(Bank[i].UserID == Users[UserIndex].UserID)
+    CurrentUserBank.push(Bank[i])
   }
 
+  console.log(CurrentUserBank)
 
+  //BankFileNew = $.csv.toObjects("./BankAPI/User1.csv")
+  //console.log(BankFileNew)
 
   //Nyt UI tegnes
   UserNameField = select('#UserNameText')
@@ -182,25 +189,101 @@ function MainPage(){
   IncomeText = createElement("h1","Indtægter")
   IncomeText.position(canvas.width/4.3,canvas.height/4)
   fill(170)
-    rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    rect(canvas.width/2 - canvas.width/5,canvas.height/1.8,canvas.width/5,canvas.height/1.3)
     fill(0)
     line(canvas.width/2 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/2 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
-    RegularIncomes = createElement("h4","Faste indtægter")
-    RegularIncomes.position(canvas.width/2 - canvas.width/5-canvas.width/12,canvas.height/1.7-canvas.height/4 )
-    line(canvas.width/2 - canvas.width/5-canvas.width/6/2,canvas.height/1.6-canvas.height/3.5,canvas.width/2 - canvas.width/5+canvas.width/6/2,canvas.height/1.6-canvas.height/3.5)
+  //Faste indtægter
+    //RegularIncomes = createElement("h4","Faste indtægter")
+    //RegularIncomes.position(canvas.width/2 - canvas.width/5-canvas.width/12,canvas.height/1.7-canvas.height/4 )
+    
+    //line(canvas.width/2 - canvas.width/5-canvas.width/6/2,canvas.height/1.6-canvas.height/3.5,canvas.width/2 - canvas.width/5+canvas.width/6/2,canvas.height/1.6-canvas.height/3.5)
+    
+    let totalFastInd = 0
+    let totalAndreInd = 0
+    let totalInd = 0
+
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'FastIndtægt'){
+        totalFastInd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'Indtægt'){
+        totalAndreInd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'FastIndtægt'||CurrentUserBank[i].Type == 'Indtægt'){
+        totalInd += parseInt(CurrentUserBank[i].Amount)
+      }
+    }
+
+    console.log("Total faste indtægter: " + totalFastInd + " Andre indtægter: " + totalAndreInd + " Total Indtægt: " + totalInd)
+
+    let FastIdtægter = "<b>Faste indtægter: <br>" + totalFastInd + "</b> <br>"
+
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'FastIndtægt'){
+        FastIdtægter += (CurrentUserBank[i].Name + ": " + CurrentUserBank[i].Amount + "<br>")
+      }
+    }
+    FastIdtægter += "<b>Andre: <br>" + totalAndreInd + "</b> <br>"
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'Indtægt'){
+        FastIdtægter += (CurrentUserBank[i].Name + ": " + CurrentUserBank[i].Amount + "<br>")
+      }
+    }
+    FastIdtægter += ("<b>Total: " + totalInd + "</b> <br>")
+    console.log(FastIdtægter)
+    RegularIncomesText = createElement("h4",FastIdtægter)
+    RegularIncomesText.position(canvas.width/2 - canvas.width/5-canvas.width/12,canvas.height/1.7-canvas.height/4  )
   //Udgifter
-  ExpensesText = createElement("h1","Udgifter")
-  ExpensesText.position(canvas.width/1.95,canvas.height/4)
+  Expenses = createElement("h1","Udgifter")
+  Expenses.position(canvas.width/1.95,canvas.height/4)
   fill(170)
-    rect(canvas.width/1.3 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    rect(canvas.width/1.3 - canvas.width/5,canvas.height/1.8,canvas.width/5,canvas.height/1.3)
     fill(0)
     line(canvas.width/1.3 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/1.3 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
+  //Faste udgifter
+    //RegularExpenses = createElement("h4","<b>Faste Udgifter:</b>")
+    //RegularExpenses.position(canvas.width/1.3 - canvas.width/5-canvas.width/6/2,canvas.height/1.7-canvas.height/4 )
+    
+    //line(canvas.width/1.3 - canvas.width/5-canvas.width/6/2,canvas.height/1.6-canvas.height/3.5,canvas.width/1.3 - canvas.width/5+canvas.width/6/2,canvas.height/1.6-canvas.height/3.5)
+    let totalFastUd = 0
+    let totalAndreUd = 0
+    let totalUd = 0
+
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'FastUdgift'){
+        totalFastUd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'Udgift'){
+        totalAndreUd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'FastUdgift'||CurrentUserBank[i].Type == 'Udgift'){
+        totalUd += parseInt(CurrentUserBank[i].Amount)
+      }
+    }
+    
+    let FastUdgifter = "<b>Faste Udgifter: <br>" + totalFastUd + "</b><br>"
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'FastUdgift'){
+        FastUdgifter += (CurrentUserBank[i].Name + ": " + CurrentUserBank[i].Amount + "<br>")
+      }
+    }
+    FastUdgifter += ("<b>Andre: <br>" + totalAndreUd + "</b> <br>")
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'Udgift'){
+        FastUdgifter += (CurrentUserBank[i].Name + ": " + CurrentUserBank[i].Amount + "<br>")
+      }
+    }
+    FastUdgifter += ("<b>Total: " + totalUd + "</b> <br>")
+    console.log(FastUdgifter)
+    RegularExpensesText = createElement("h4",FastUdgifter)
+    RegularExpensesText.position(canvas.width/1.3 - canvas.width/5-canvas.width/6/2,canvas.height/1.7-canvas.height/4)
+    
 
   //Budget
   BudgetText = createElement("h1","Budget")
   BudgetText.position(canvas.width/1.3,canvas.height/4)
   fill(170)
-    rect(canvas.width/0.98 - canvas.width/5,canvas.height/1.8,canvas.width/6,canvas.height/1.3)
+    rect(canvas.width/0.98 - canvas.width/5,canvas.height/1.8,canvas.width/5,canvas.height/1.3)
     fill(0)
     line(canvas.width/0.98 - canvas.width/5-canvas.width/6/2,canvas.height/1.8-canvas.height/3.5,canvas.width/0.98 - canvas.width/5+canvas.width/6/2,canvas.height/1.8-canvas.height/3.5)
 

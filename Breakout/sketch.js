@@ -342,7 +342,7 @@ function GenerateLevel(LevelNum){
   StartButton.hide()
   SettingsButton.hide()
   LevelsButton.hide()
-  NextLevelButton.hide()
+  NextLevelButton.hide(4)
 
 
 

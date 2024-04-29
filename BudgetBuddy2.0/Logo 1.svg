@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Lag_1" data-name="Lag 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 254.3 31.58">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #bd3051;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #6869b0;
+      }
+
+      .cls-4 {
+        fill: #2a1000;
+      }
+
+      .cls-5 {
+        font-family: Bold-Dragon, 'Bold Dragon';
+        font-size: 29.7px;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-5" transform="translate(0 27.87)"><tspan class="cls-1" x="0" y="0">B</tspan><tspan class="cls-3" x="22.27" y="0">udget</tspan><tspan class="cls-4" x="133.65" y="0"> </tspan><tspan class="cls-1" x="142.93" y="0">B</tspan><tspan class="cls-2" x="165.2" y="0">uddy</tspan></text>
+</svg>

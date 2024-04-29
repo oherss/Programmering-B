@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .float-left {
+          float: left;
+          margin: 10px;
+      }
+
+      .float-right {
+          float: right;
+          margin: 10px;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   
+  </head>
+
+  <body>
+    <script src="sketch.js"></script>
+
+    <img src = "Logo 1.svg" alt="Budget Buddy" class="float-left"/>
+    <button id="UserNameText" class="float-right">Ikke logget ind</button>
+
+    
+<div class="centered-div">
+  <div>
+    
+      
+    
+      <div class="container">
+        <h2>Log ind:</h2>
+        <label ><b>Brugernavn</b></label>
+        <input id="UserNameInputLogin" type="text" placeholder="Brugernavn" >
+    
+        <label ><b>Adgangskode</b></label>
+        <input id = "UserPassInputLogin" type="password" placeholder="Adgangskode" >
+    
+        <button id = "LoginButton" >Log ind</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Husk mig
+        </label>
+      </div>
+    
+      <div class="container">
+        
+        <span class="psw">Glemt <a href="#">Adgangskode?</a></span>
+      </div>
+
+ 
+
+    
+      
+    
+      <div class="container">
+        <h2>Ny Bruger:</h2>
+        <label ><b>Brugernavn</b></label>
+        <input id = "UserNameInputNew" type="text" placeholder="Brugernavn" >
+    
+        <label ><b>Adgangskode</b></label>
+        <input id="UserPassInputNew" type="password" placeholder="Adgangskode">
+    
+        <button id="SignUpButton" type="submit">Opret Bruger</button>
+        
+      </div>
+    
+      
+    
+    </div>
+</div>
+    
+  </body>
+</html>

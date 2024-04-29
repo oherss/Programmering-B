@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(94, 94, 94);
+}
+
+canvas {
+  display: block;
+}
+img {
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+  width: 15%;
+}
+
+.centered-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.menu{
+  position: fixed;
+  height: 80vh;
+  width: 80vw;
+  background: rgb(87, 87, 87);
+  bottom: 0;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.menuitem{
+  display: grid;
+  text-align: center;
+  place-items: top;
+  border: 10px solid grey;
+  
+}
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
