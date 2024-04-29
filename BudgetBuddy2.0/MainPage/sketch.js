@@ -116,6 +116,68 @@ function setup() {
     
     ExpensesText = select('#ExpensesText')
     ExpensesText.html(FastUdgifter);
+
+    //Categorized things, first incomes:
+    let incomeCategories = []
+    for (let i = 0; i < CurrentUserBank.length; i++) {
+      if(CurrentUserBank[i].Type == 'Indtægt'||CurrentUserBank[i].Type == 'FastIndtægt'){
+        if(!isInArray(incomeCategories,CurrentUserBank[i].Category)){
+          incomeCategories.push(CurrentUserBank[i].Category)
+
+        }
+      }
+    }
+    let CategorizedIncomes = ""
+    for (let i = 0; i < incomeCategories.length; i++) {
+      let CurrentCategory = incomeCategories[i]
+      CategorizedIncomes += ("<b>" + CurrentCategory + "</b><br>")
+      for (let v = 0; v < CurrentUserBank.length; v++) {
+        if(CurrentUserBank[v].Category == CurrentCategory && (CurrentUserBank[v].Type == 'Indtægt'||CurrentUserBank[v].Type == 'FastIndtægt')){
+          CategorizedIncomes += (CurrentUserBank[v].Name + ": " + CurrentUserBank[v].Amount + "<br>")
+        }
+      }
+      
+    }
+console.log(incomeCategories)
+CategorizedIncomesText = select('#IncomeCat')
+CategorizedIncomesText.html(CategorizedIncomes);
+
+//Now the expenses:
+let expsenseCategories = []
+    for (let i = 0; i < CurrentUserBank.length; i++) {
+      if(CurrentUserBank[i].Type == 'Udgift'||CurrentUserBank[i].Type == 'FastUdgift'){
+        if(!isInArray(expsenseCategories,CurrentUserBank[i].Category)){
+          expsenseCategories.push(CurrentUserBank[i].Category)
+
+        }
+      }
+    }
+    let CategorizedExpenses = ""
+    for (let i = 0; i < expsenseCategories.length; i++) {
+      let CurrentCategory = expsenseCategories[i]
+      CategorizedExpenses += ("<b>" + CurrentCategory + "</b><br>")
+      for (let v = 0; v < CurrentUserBank.length; v++) {
+        if(CurrentUserBank[v].Category == CurrentCategory && (CurrentUserBank[v].Type == 'FastUdgift'||CurrentUserBank[v].Type == 'Udgift')){
+          CategorizedExpenses += (CurrentUserBank[v].Name + ": " + CurrentUserBank[v].Amount + "<br>")
+        }
+      }
+      
+    }
+console.log(expsenseCategories)
+CategorizedExpenseText = select('#ExpensesCat')
+CategorizedExpenseText.html(CategorizedExpenses);
+
+}
+
+
+function isInArray(Array, value){
+  let val = false
+  for (let i = 0; i < Array.length; i++) {
+    if(Array[i]==value){
+    val = true
+    }
+  }
+  return(val)
 }
 function deleteAllCookies() {
   const cookies = document.cookie.split(";");

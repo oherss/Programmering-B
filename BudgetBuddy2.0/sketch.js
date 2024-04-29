@@ -115,7 +115,7 @@ function deleteAllCookies() {
 function showCookies (){
   if(areCookiesStored()){
   let storedUsername = document.cookie;
-console.log("Stored username:", storedUsername);
+console.log("Stored username: ", storedUsername);
 }
 else
 console.log("No cookies stored")
@@ -134,6 +134,4 @@ function setCookie(name, value, minutes) {
   const expirationTime = new Date(now.getTime() + minutes * 60 * 1000); // Add 30 minutes
   document.cookie = `${name}=${value}; expires=${expirationTime.toUTCString()}; path=/`;
 }
-function draw() {
-  background(220);
-}
+
