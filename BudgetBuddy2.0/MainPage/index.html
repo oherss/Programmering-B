@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .float-left {
+          float: left;
+          margin: 10px;
+      }
+
+      .float-right {
+          float: right;
+          margin: 10px;
+      }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,14 +22,26 @@
 
 
     <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
+    
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    
     <img src = "../Logo 1.svg" alt="Budget Buddy" class="float-left"/>
-    <button id="UserNameText" class="float-right">Ikke logget ind</button>
-    <div class="centered-div">
+    
+    <form>
+      <button style="color: white" id="UserNameText" class="float-right" formaction="../Profile">Ikke logget ind</button>
+    </form>
+    
+
+    <script src="sketch.js"></script>
+
+<div class="centered-x1"><h1></h1></div>
+    
+    <div class="centered-x">
+      <h2>Oversigt</h2>
+    </div>
+      <div class="centered-div">
       <div class="menu">
       <div class = "menuitem">
         <h2>Indtægter</h2>
@@ -33,6 +56,28 @@
       <div class = "menuitem">
         <h2>Budget</h2>
         <h4 id="BudgetText">Data hentes</h4>
+      </div>
+      </div>
+    </div>
+    <br>
+    <div class="centered-x">
+      <h2>Kategoriseret</h2>
+    </div>
+    <div class="centered-div">
+      <div class="menu">
+      <div class = "menuitem">
+        <h2>Indtægter</h2>
+        <h4 id="IncomeCat">Data hentes</h4>
+      </div>
+
+      <div class = "menuitem">
+        <h2>Udgifter</h2>
+        <h4 id="ExpensesCat">Data hentes</h4>
+      </div>
+
+      <div class = "menuitem">
+        <h2>Budget</h2>
+        <h4 id="BudgetCat">Data hentes</h4>
       </div>
 
       </div>

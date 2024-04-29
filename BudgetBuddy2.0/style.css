@@ -2,8 +2,11 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: rgb(94, 94, 94);
+  color: white;
 }
-
+h1,h2,h3,h4{
+  color: white;
+}
 canvas {
   display: block;
 }
@@ -18,10 +21,22 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
+}
+.centered-x {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.centered-x1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
 }
 .menu{
-  position: fixed;
+  
   height: 80vh;
   width: 80vw;
   background: rgb(87, 87, 87);

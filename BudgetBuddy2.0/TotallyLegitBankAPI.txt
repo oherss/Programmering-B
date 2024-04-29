@@ -1,10 +1,10 @@
-{"UserID":"1","Type":"FastIndtægt","Amount":"3673","Name":"Netto"}
-{"UserID":"1","Type":"FastIndtægt","Amount":"658","Name":"SU"}
-{"UserID":"1","Type":"FastUdgift","Amount":"93","Name":"Patreon"}
-{"UserID":"1","Type":"FastUdgift","Amount":"1000","Name":"Opsparing"}
-{"UserID":"1","Type":"FastUdgift","Amount":"500","Name":"Investering"}
-{"UserID":"1","Type":"Udgift","Amount":"48","Name":"Rema"}
-{"UserID":"1","Type":"Udgift","Amount":"1700","Name":"Bad Dragon"}
-{"UserID":"1","Type":"Udgift","Amount":"36","Name":"Netto"}
-{"UserID":"1","Type":"Indtægt","Amount":"232","Name":"Pant"}
-{"UserID":"1","Type":"Indtægt","Amount":"69","Name":"Dividens"}
+{"UserID":"1","Type":"FastIndtægt","Amount":"3673","Name":"Netto","Category":"Job"}
+{"UserID":"1","Type":"FastIndtægt","Amount":"658","Name":"SU","Category":"Støtte"}
+{"UserID":"1","Type":"FastUdgift","Amount":"93","Name":"Patreon","Category":"Sjov"}
+{"UserID":"1","Type":"FastUdgift","Amount":"1000","Name":"Opsparing","Category":"Opsparing"}
+{"UserID":"1","Type":"FastUdgift","Amount":"500","Name":"Investering","Category":"Investering"}
+{"UserID":"1","Type":"Udgift","Amount":"48","Name":"Rema","Category":"Indkøb"}
+{"UserID":"1","Type":"Udgift","Amount":"1700","Name":"Bad Dragon","Category":"Sjov"}
+{"UserID":"1","Type":"Udgift","Amount":"36","Name":"Netto","Category":"Indkøb"}
+{"UserID":"1","Type":"Indtægt","Amount":"232","Name":"Pant","Category":"Pant"}
+{"UserID":"1","Type":"Indtægt","Amount":"69","Name":"Dividens","Category":"Investering"}
