@@ -17,7 +17,7 @@
       .cls-5 {
         font-family: Bold-Dragon, 'Bold Dragon';
         font-size: 29.7px;
-        src: url('/fonts/Bold_Dragon/bold-dragon.tff');
+        src: url('/fonts/Bold_Dragon/bold-dragon.ttf');
       }
 
       .cls-3 {
