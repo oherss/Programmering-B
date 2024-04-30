@@ -5,7 +5,7 @@ let UsersFile = []
 let BankFile =[]
 let Bank = []
 let CurrentUserBank = []
-
+let LogOutButton
 function preload(){
   
   UsersFile = loadStrings('../Users.txt')
@@ -21,6 +21,13 @@ function setup() {
   else{
     console.log("Logged in")
   }
+
+  LogOutButton = select('#LogOut')
+  LogOutButton.mouseClicked(()=>{
+    console.log("Logging out...")
+    deleteAllCookies()
+    window.location.href = '/..'
+  })
 
   UserIndex = document.cookie.split("=")[1];
   BankIndex = UserIndex
@@ -45,6 +52,8 @@ function setup() {
   UserNameField.html(Users[UserIndex].UserName)
 
 }
+
+
 
 function areCookiesStored() {
   let storedUsername = document.cookie;

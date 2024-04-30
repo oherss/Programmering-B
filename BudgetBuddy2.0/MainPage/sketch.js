@@ -18,7 +18,7 @@ function setup() {
   if(areCookiesStored() == false)
   {
     console.log("Not logged in")
-    window.location.href = '/..'
+    window.location.href = '/../index.html'
   }
   else{
     console.log("Logged in")

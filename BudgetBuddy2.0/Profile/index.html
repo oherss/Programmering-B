@@ -9,8 +9,16 @@
 
       .float-right {
           float: right;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          margin-right: 1.5%;
+      }
+      .float-right2 {
+          float: right;
           margin: 10px;
       }
+
+      
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,14 +34,28 @@
   </head>
 
   <body>
-    <a href="../MainPage/">
-    <img src = "../Logo 1.svg" alt="Budget Buddy" class="float-left"/>
-  </a>
-    <form>
-      <button style="color: white" id="UserNameText" class="float-right" formaction="../Profile">Ikke logget ind</button>
-    </form>
+
+    <div class="TopField" style="margin: 0px;">
+      <a href="../MainPage/">
+      <img src = "../Logo 1.svg" alt="Budget Buddy" class="float-left"/>
+    </a>
+      <a href="../Profile/">
+        <button style="color: white" id="UserNameText" class="float-right"  style="padding: 0%;">Ikke logget ind</button>
+      </a>
+      
+      <button style="color: white" id="LogOut" class="float-right2" style="padding: 0%;">Log Ud</button>
+      </div>
     
-    
+
+
     <script src="sketch.js"></script>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div>
+      <h4 id="UserInfo" style="margin-left: 1%;">Info om bruger hentes...</h4>
+    </div>
   </body>
 </html>

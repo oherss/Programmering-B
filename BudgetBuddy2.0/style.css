@@ -7,16 +7,23 @@ html, body {
 h1,h2,h3,h4{
   color: white;
 }
-canvas {
-  display: block;
-}
+
 img {
   margin-left: 2%;
-  margin-top: 1%;
+  margin-top: 10px;
   margin-bottom: 0.5%;
-  width: 15%;
+  width: 20%;
 }
 
+.TopField {
+  height: 6vh;
+  width: 100vw;
+  background: rgb(36, 36, 36);
+  margin-top: 0px;
+}
+.infoField {
+  margin-top: 10%;
+}
 .centered-div {
   display: flex;
   justify-content: center;
