@@ -24,6 +24,13 @@ function setup() {
     console.log("Logged in")
   }
 
+  LogOutButton = select('#LogOut')
+  LogOutButton.mouseClicked(()=>{
+    console.log("Logging out...")
+    deleteAllCookies()
+    window.location.href = '/..'
+  })
+
   UserIndex = document.cookie.split("=")[1];
   BankIndex = UserIndex
   

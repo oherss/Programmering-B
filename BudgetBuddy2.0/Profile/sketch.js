@@ -6,6 +6,10 @@ let BankFile =[]
 let Bank = []
 let CurrentUserBank = []
 let LogOutButton
+let totalUd = 0
+let totalInd = 0
+let fun
+  let shopping
 function preload(){
   
   UsersFile = loadStrings('../Users.txt')
@@ -21,7 +25,7 @@ function setup() {
   else{
     console.log("Logged in")
   }
-
+  const now = new Date();
   LogOutButton = select('#LogOut')
   LogOutButton.mouseClicked(()=>{
     console.log("Logging out...")
@@ -51,10 +55,86 @@ function setup() {
   UserNameField = select('#UserNameText')
   UserNameField.html(Users[UserIndex].UserName)
 
+
+  UserInfoField = select("#UserInfo")
+  UserInfo = "Navn: " + Users[UserIndex].RealName +" (" +Users[UserIndex].Age + " år)" + "<br> Tilknyttet bank: " + Users[UserIndex].Bank
+  let totalFastInd = 0
+  let totalAndreInd = 0
+  let totalInd = 0
+
+  for(let i = 0; i < CurrentUserBank.length; i++){
+    if(CurrentUserBank[i].Type == 'FastIndtægt'){
+      totalFastInd += parseInt(CurrentUserBank[i].Amount)
+    }
+    if(CurrentUserBank[i].Type == 'Indtægt'){
+      totalAndreInd += parseInt(CurrentUserBank[i].Amount)
+    }
+    if(CurrentUserBank[i].Type == 'FastIndtægt'||CurrentUserBank[i].Type == 'Indtægt'){
+      totalInd += parseInt(CurrentUserBank[i].Amount)
+    }
+  }
+  let totalFastUd = 0
+    let totalAndreUd = 0
+    let totalUd = 0
+
+    for(let i = 0; i < CurrentUserBank.length; i++){
+      if(CurrentUserBank[i].Type == 'FastUdgift'){
+        totalFastUd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'Udgift'){
+        totalAndreUd += parseInt(CurrentUserBank[i].Amount)
+      }
+      if(CurrentUserBank[i].Type == 'FastUdgift'||CurrentUserBank[i].Type == 'Udgift'){
+        totalUd += parseInt(CurrentUserBank[i].Amount)
+      }
+    }
+  UserInfo += "<br><br> Gennemsnitlig indkomst: " + totalFastInd + "DKK"
+  UserInfo += "<br><br> Total Frikort: " + Users[UserIndex].Frikort + "DKK"
+  let JobSalary
+  for (let i = 0; i < CurrentUserBank.length; i++) {
+    if(CurrentUserBank[i].Category == "Job")
+    JobSalary = CurrentUserBank[i].Amount
+    
+  }
+  UserInfo += "<br> Total resterende: " + (Users[UserIndex].Frikort - (JobSalary * now.getMonth())) + "DKK"
+  UserInfo += "<br><br> Angivet indtjæning: " + Users[UserIndex].SelvtastIncome  + "DKK"
+  UserInfo += "<br> Forventet indtjæning: " + totalFastInd*12  + "DKK"
+  let DifColor
+  if(Users[UserIndex].SelvtastIncome- totalFastInd*12 > 1000)
+  DifColor = "Red"
+  else if(Users[UserIndex].SelvtastIncome- totalFastInd*12 > 500)
+  DifColor = "Orange"
+  else if(Users[UserIndex].SelvtastIncome- totalFastInd*12 < 500)
+  DifColor = "Green"
+
+  UserInfo += "<br> Difference: <span style= 'color: " +DifColor + ";'>"  +(Users[UserIndex].SelvtastIncome- totalFastInd*12)  + "DKK</span>"
+
+  let Saving = "Overskud: "
+  let SavingsText
+  let fun
+  let shopping
+  let SavningGoal
+  SavingsText = select("#SavingsText")
+  fun = select("#FunUsage")
+  shopping = select("#ShoppingUsage")
+  SavningGoal = select("#SavingGoal")
+
+  Saving += totalInd-totalUd-fun.value()- shopping.value() + "DKK <br><br> Beløb på opsparing: "  + Users[UserIndex].Savings
+  Saving += "<br><br> Estimeret tid til osparingsmål: <br>" + Math.round((SavningGoal.value()-Users[UserIndex].Savings)/(totalInd-totalUd-fun.value()- shopping.value())) + " Måneder"
+
+console.log()
+  SavingsText.html(Saving)
+  UserInfoField.html(UserInfo)
+
 }
-
-
-
+/*
+function draw(){
+  let Saving = "Overskud: "
+  Saving += totalInd-totalUd-fun.value()- shopping.value() + "DKK <br><br> Beløb på opsparing: "  + Users[UserIndex].Savings
+  Saving += "<br><br> Estimeret tid til osparingsmål: <br>" + Math.round((SavningGoal.value()-Users[UserIndex].Savings)/(totalInd-totalAndreUd-fun.value()- shopping.value())) + " Måneder"
+  SavingsText.html(Saving)
+}
+*/
 function areCookiesStored() {
   let storedUsername = document.cookie;
   if(storedUsername != "")
