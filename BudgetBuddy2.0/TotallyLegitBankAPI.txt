@@ -6,4 +6,22 @@
 {"UserID":"1","Type":"Udgift","Amount":"1700","Name":"Bad Dragon","Category":"Sjov"}
 {"UserID":"1","Type":"Udgift","Amount":"36","Name":"Netto","Category":"Indkøb"}
 {"UserID":"1","Type":"Indtægt","Amount":"232","Name":"Pant","Category":"Pant"}
+{"UserID":"1","Type":"Udgift","Amount":"95","Name":"Netto","Category":"Indkøb"}
+{"UserID":"1","Type":"Udgift","Amount":"48","Name":"Netto","Category":"Indkøb"}
+{"UserID":"1","Type":"Udgift","Amount":"113","Name":"Netto","Category":"Indkøb"}
+{"UserID":"1","Type":"Udgift","Amount":"184","Name":"Netto","Category":"Indkøb"}
 {"UserID":"1","Type":"Indtægt","Amount":"69","Name":"Dividens","Category":"Investering"}
+{"UserID":"2","Type":"FastIndtægt","Amount":"1500","Name":"Føtex","Category":"Job"}
+{"UserID":"2","Type":"FastIndtægt","Amount":"2000","Name":"SU","Category":"Støtte"}
+{"UserID":"2","Type":"FastUdgift","Amount":"150","Name":"Patreon","Category":"Sjov"}
+{"UserID":"2","Type":"FastUdgift","Amount":"500","Name":"Investering","Category":"Investering"}
+{"UserID":"2","Type":"Udgift","Amount":"48","Name":"Rema","Category":"Indkøb"}
+{"UserID":"2","Type":"Udgift","Amount":"1300","Name":"Merch","Category":"Sjov"}
+{"UserID":"2","Type":"Udgift","Amount":"37","Name":"Netto","Category":"Indkøb"}
+{"UserID":"2","Type":"Indtægt","Amount":"232","Name":"Pant","Category":"Pant"}
+{"UserID":"2","Type":"Indtægt","Amount":"69","Name":"Dividens","Category":"Investering"}
+{"UserID":"2","Type":"Udgift","Amount":"95","Name":"Netto","Category":"Indkøb"}
+{"UserID":"2","Type":"Udgift","Amount":"48","Name":"Netto","Category":"Indkøb"}
+{"UserID":"2","Type":"Udgift","Amount":"113","Name":"Netto","Category":"Indkøb"}
+{"UserID":"2","Type":"Udgift","Amount":"184","Name":"Netto","Category":"Indkøb"}
+{"UserID":"2","Type":"Udgift","Amount":"560","Name":"Silly String","Category":"Sjov"}

@@ -78,13 +78,18 @@ function setup() {
     let NewUserName = UserNameInputNew.value()
     let NewPassWord = UserPassInputNew.value()
     
-    let NewUserID = (parseInt(Users[Users.length - 1].UserID) + 1).toString()
-
+    /*let NewUserID = (parseInt(Users[Users.length - 1].UserID) + 1).toString()
+    
     Users.push({
       UserID: NewUserID,
       UserName: NewUserName,
       PassWord: NewPassWord
     })
+*/
+
+    let NewUserID = 3
+    Users[2].UserName = NewUserName
+    Users[2].PassWord = NewPassWord
     console.log(Users)
 
    

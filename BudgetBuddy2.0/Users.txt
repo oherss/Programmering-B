@@ -1,2 +1,3 @@
 {"UserID":"1","UserName":"Oliver","PassWord":"Adgangskode","RealName":"Oliver Herss","Bank":"Danske Bank","Goal":"50000","GoalName":"Depositum for lejlighed","Age":"18","Frikort":"56000","SelvtastIncome":"68500","Savings":"25000"}
-{"UserID":"2","UserName":"Isak","PassWord":"Lagkage","RealName":"Oliver Herss","Bank":"Danske Bank","Goal":"50000","GoalName":"Depositum for lejlighed","Age":"18","Frikort":"56000","SelvtastIncome":"150000","Savings":"25000"}
+{"UserID":"2","UserName":"Isak","PassWord":"Lagkage","RealName":"Isak Pedersen","Bank":"Lån og Spar","Goal":"10000","GoalName":"Ny cykel","Age":"18","Frikort":"56000","SelvtastIncome":"60000","Savings":"5000"}
+{"UserID":"3","UserName":"","PassWord":"","RealName":"Ny bruger","Bank":"Ingen Tilknyttet bank","Goal":"50000","GoalName":"Depositum for lejlighed","Age":"Ukendt alder","Frikort":"Ukendt","SelvtastIncome":"Ukendt","Savings":"Ukendt"}

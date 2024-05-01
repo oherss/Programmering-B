@@ -30,7 +30,7 @@ function setup() {
   if(areCookiesStored() == false)
   {
     console.log("Not logged in")
-    window.location.href = '/..'
+    window.location.href = '../'
   }
   else{
     console.log("Logged in")
@@ -40,7 +40,7 @@ function setup() {
   LogOutButton.mouseClicked(()=>{
     console.log("Logging out...")
     deleteAllCookies()
-    window.location.href = '/..'
+    window.location.href = '../'
   })
 
   UserIndex = document.cookie.split("=")[1];
