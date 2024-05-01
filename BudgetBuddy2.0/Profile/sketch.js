@@ -6,10 +6,20 @@ let BankFile =[]
 let Bank = []
 let CurrentUserBank = []
 let LogOutButton
-let totalUd = 0
+let totalFastInd = 0
+let totalAndreInd = 0
 let totalInd = 0
+let totalFastUd = 0
+let totalAndreUd = 0
+let totalUd = 0
+let JobSalary
 let fun
-  let shopping
+let shopping
+let Saving
+let SavingsText
+let SavningGoal
+let DifColor
+const now = new Date();
 function preload(){
   
   UsersFile = loadStrings('../Users.txt')
@@ -25,7 +35,7 @@ function setup() {
   else{
     console.log("Logged in")
   }
-  const now = new Date();
+  
   LogOutButton = select('#LogOut')
   LogOutButton.mouseClicked(()=>{
     console.log("Logging out...")
@@ -54,13 +64,28 @@ function setup() {
 
   UserNameField = select('#UserNameText')
   UserNameField.html(Users[UserIndex].UserName)
-
+  SavingsText = select("#SavingsText")
+  fun = select("#FunUsage")
+  shopping = select("#ShoppingUsage")
+  SavningGoal = select("#SavingGoal")
 
   UserInfoField = select("#UserInfo")
+  UpdateText()
+
+
+  let UpdateButton = select('#UpdateButton')
+  UpdateButton.mouseClicked(()=>{
+    UpdateText()
+  })
+}
+
+
+function UpdateText(){
+  console.log("Updating text")
   UserInfo = "Navn: " + Users[UserIndex].RealName +" (" +Users[UserIndex].Age + " år)" + "<br> Tilknyttet bank: " + Users[UserIndex].Bank
-  let totalFastInd = 0
-  let totalAndreInd = 0
-  let totalInd = 0
+  totalFastInd = 0
+  totalAndreInd = 0
+  totalInd = 0
 
   for(let i = 0; i < CurrentUserBank.length; i++){
     if(CurrentUserBank[i].Type == 'FastIndtægt'){
@@ -73,9 +98,9 @@ function setup() {
       totalInd += parseInt(CurrentUserBank[i].Amount)
     }
   }
-  let totalFastUd = 0
-    let totalAndreUd = 0
-    let totalUd = 0
+  totalFastUd = 0
+  totalAndreUd = 0
+  totalUd = 0
 
     for(let i = 0; i < CurrentUserBank.length; i++){
       if(CurrentUserBank[i].Type == 'FastUdgift'){
@@ -90,7 +115,7 @@ function setup() {
     }
   UserInfo += "<br><br> Gennemsnitlig indkomst: " + totalFastInd + "DKK"
   UserInfo += "<br><br> Total Frikort: " + Users[UserIndex].Frikort + "DKK"
-  let JobSalary
+  
   for (let i = 0; i < CurrentUserBank.length; i++) {
     if(CurrentUserBank[i].Category == "Job")
     JobSalary = CurrentUserBank[i].Amount
@@ -99,7 +124,7 @@ function setup() {
   UserInfo += "<br> Total resterende: " + (Users[UserIndex].Frikort - (JobSalary * now.getMonth())) + "DKK"
   UserInfo += "<br><br> Angivet indtjæning: " + Users[UserIndex].SelvtastIncome  + "DKK"
   UserInfo += "<br> Forventet indtjæning: " + totalFastInd*12  + "DKK"
-  let DifColor
+  
   if(Users[UserIndex].SelvtastIncome- totalFastInd*12 > 1000)
   DifColor = "Red"
   else if(Users[UserIndex].SelvtastIncome- totalFastInd*12 > 500)
@@ -109,23 +134,14 @@ function setup() {
 
   UserInfo += "<br> Difference: <span style= 'color: " +DifColor + ";'>"  +(Users[UserIndex].SelvtastIncome- totalFastInd*12)  + "DKK</span>"
 
-  let Saving = "Overskud: "
-  let SavingsText
-  let fun
-  let shopping
-  let SavningGoal
-  SavingsText = select("#SavingsText")
-  fun = select("#FunUsage")
-  shopping = select("#ShoppingUsage")
-  SavningGoal = select("#SavingGoal")
+  Saving = "Overskud: "
+  
 
   Saving += totalInd-totalUd-fun.value()- shopping.value() + "DKK <br><br> Beløb på opsparing: "  + Users[UserIndex].Savings
   Saving += "<br><br> Estimeret tid til osparingsmål: <br>" + Math.round((SavningGoal.value()-Users[UserIndex].Savings)/(totalInd-totalUd-fun.value()- shopping.value())) + " Måneder"
 
-console.log()
   SavingsText.html(Saving)
   UserInfoField.html(UserInfo)
-
 }
 /*
 function draw(){

@@ -1,7 +1,6 @@
 {"UserID":"1","Type":"FastIndtægt","Amount":"5000","Name":"Netto","Category":"Job"}
 {"UserID":"1","Type":"FastIndtægt","Amount":"658","Name":"SU","Category":"Støtte"}
 {"UserID":"1","Type":"FastUdgift","Amount":"93","Name":"Patreon","Category":"Sjov"}
-{"UserID":"1","Type":"FastUdgift","Amount":"1000","Name":"Opsparing","Category":"Opsparing"}
 {"UserID":"1","Type":"FastUdgift","Amount":"500","Name":"Investering","Category":"Investering"}
 {"UserID":"1","Type":"Udgift","Amount":"48","Name":"Rema","Category":"Indkøb"}
 {"UserID":"1","Type":"Udgift","Amount":"1700","Name":"Bad Dragon","Category":"Sjov"}
