@@ -17,7 +17,9 @@ let ScreenRes = {
 
 let LevelFile = [] //An array that stores the raw file with all the levels.
 let Levels = [] //An array that will store the processed levels as JSON objects.
+let LevelInfos = []
 let LevelsInFile
+let unparsedLevels = []
 
 let CurrentLevel = 1 //Keeps track of the currently selected level.
 let BlocksInLevel = [] //An array that stores all the targets to be drawn in the current level.
@@ -71,19 +73,18 @@ function ParseLevels(){
     let obj = JSON.parse(LevelFile[i])
     console.log(obj)
     if(obj.Type == "LevelInfo"){
-      lives = obj.Lives
+      LevelInfos.push(obj)
     }
     if(obj.Type == "FileInfo"){
       LevelsInFile = obj.Levels
     }
-
-    
-
     if(obj.Type == "Target"){
-      Levels[i-2] = obj
+      Levels.push(obj)
     }
 
   }  
+  console.log("Levels: " )
+  console.log( LevelInfos)
 }
 
 function setup() {
@@ -155,7 +156,7 @@ function HomePage (){
 
     })
     NextLevelButton.mouseClicked(()=>{
-      GenerateLevel(CurrentLevel+1)
+      GenerateLevel(parseInt(CurrentLevel)+1)
       
     })
 }
@@ -201,12 +202,12 @@ function draw() {
     BlockCount = BlocksInLevel.length
     for (let i = 0; i < BlocksInLevel.length; i++) {
       obj = BlocksInLevel[i]
-      if(obj.Hit == "false"){
+      if(obj.hit == "false"){
         fill(obj.R,obj.G,obj.B)
         rect(obj.x,obj.y,obj.w,obj.h)
         fill(255)
       }
-      else if(obj.Hit)
+      else if(obj.hit)
       {
         BlockCount--
       }
@@ -239,7 +240,7 @@ function CeckCollision(){
 
   //Check collision with walls
   if(ball.x + ball.r > ScreenRes.w){
-    ball.speed++
+    //ball.speed++
     console.log("Hit right wall")
     ball.directionx = -ball.directionx
     if(ball.directiony == 0)
@@ -247,7 +248,7 @@ function CeckCollision(){
   }
 
   if(ball.x - ball.r<0){
-    ball.speed++
+    //ball.speed++
     console.log("Hit left wall")
     ball.directionx = -ball.directionx
     if(ball.directiony == 0)
@@ -257,7 +258,7 @@ function CeckCollision(){
   //check collision with ceiling
 
   if(ball.y - ball.r < 0){
-    ball.speed++
+    //ball.speed++
       console.log("hit ceiling")
       ball.directiony = -ball.directiony
       if(ball.directionx == 0)
@@ -267,7 +268,7 @@ function CeckCollision(){
   //Check collision with platform
   
   if(ball.y + ball.r >= platform.y - platform.h/2 && ball.y - ball.r <= platform.y - platform.h/2 && ball.x + ball.r < platform.x + platform.w/2 && ball.x - ball.r > platform.x - platform.w/2){
-    ball.speed++
+    //ball.speed++
     console.log("hit platform")
       ball.directiony = -ball.directiony
       if(ball.directionx == 0)
@@ -291,10 +292,10 @@ function CeckCollision(){
 
   for (let i = 0; i < BlocksInLevel.length; i++) {
     obj = BlocksInLevel[i]
-    if(obj.Hit == "false"){
+    if(obj.hit == "false"){
       if(ball.y + ball.r >= obj.y - obj.h/2 && ball.y - ball.r <= obj.y - obj.h/2 && ball.x - ball.r < obj.x + obj.w/2 && ball.x + ball.r > obj.x - obj.w/2){
         console.log("hit Block")
-        obj.Hit = true
+        obj.hit = true
         ball.directiony = -ball.directiony
         if(ball.directionx == 0)
           ball.directionx = ball.directionx + random(-1,1)
@@ -309,8 +310,9 @@ function BallPhysics(){
 }
 
 function GameOver(){
-  StartButton.show()
-  StartButton.html("Try Again")
+  location.reload()
+  //StartButton.show()
+  //StartButton.html("Try Again")
   IsPlaying = false
   createCanvas(ScreenRes.w, ScreenRes.h)
   background(220);
@@ -338,24 +340,24 @@ function LevelWon(){
 
 function GenerateLevel(LevelNum){
 
+  
   CurrentLevel = LevelNum
   StartButton.hide()
   SettingsButton.hide()
   LevelsButton.hide()
-  NextLevelButton.hide(4)
+  NextLevelButton.hide()
 
-
+console.log("Generating level: " + CurrentLevel)
 
   //Makes a new canvas at the desired resolution.
   createCanvas(ScreenRes.w, ScreenRes.h);
   BlocksInLevel = []
-  CurrentLives = lives
-  ParseLevels()
+  CurrentLives = LevelInfos[CurrentLevel-1].Lives
 console.log(Levels)
   for (let i = 0; i < Levels.length; i++) {
-    if(Levels[i].Level == CurrentLevel && Levels[i].Type == "Target"){
-      BlocksInLevel.push(Levels[i])
-      BlocksInLevel[i]['Hit'] = 'false'
+    if(Levels[i].Level == CurrentLevel.toString() && Levels[i].Type == "Target"){
+      BlocksInLevel[i] = Levels[i]
+      BlocksInLevel[i].hit = "false"
       console.log(BlocksInLevel[i])
       console.log(Levels[i])
     }

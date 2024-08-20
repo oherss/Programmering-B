@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color: #012e56;
+}
+.Page{
+    position: fixed;
+    top: 0;
+    left:-100vw;
+    background-color: #012e56;
+    background-attachment:fixed;
+    background-position:50% 0%;
+    background-repeat:no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    transition: 0.6s all ease-in-out;
+}
+h1{
+    color: #ECB237;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+h2{
+    color: #ECB237;
+    font-family: Raleway;
+}
+
+.visible{
+    left: 0;
+}
+
+#Page1{
+    background-color: #012e56;
+}
+#Page2{
+    background-color: #87F2E3;
+}
+#Page3{
+    background-color: #DEF005;
+}
+#Page4{
+    background-color: #885695;
+}

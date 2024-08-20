@@ -3,6 +3,8 @@
 ./Breakout
 ./BudgetBuddy
 ./BudgetBuddy2.0
+./BudgetBuddy2.0(backup)
+./Exam programming class c-level
 ./Instrument med M5
 ./JSON 1
 ./JSON 2
@@ -12,3 +14,4 @@
 ./Loops opgave 2
 ./M5 mqtt template
 ./Paintprogram
+./Web template 01
