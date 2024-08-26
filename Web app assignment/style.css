@@ -20,7 +20,8 @@ header{
 header#leftMenu{
     width: 15vw;
     height: 100vh;
-    grid-template-rows: repeat(4,1fr);
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4,10rem);
 }
 .menuitem{
     width: 100%;
@@ -28,7 +29,7 @@ header#leftMenu{
     font-size: 4rem;
     display: grid;
     place-items: center;
-    border-right: 1px solid black;
+    border-bottom: 1px solid black;
     cursor: pointer;
     transition: 0.3s all ease-in-out;
 }
@@ -43,9 +44,9 @@ header#leftMenu{
     background-attachment:fixed;
     background-position:50% 0%;
     background-repeat:no-repeat;
-    width: 100vw;
-    height: 88vh;
-    top: 12vh;
+    width: 85vw;
+    height: 100vh;
+    margin-left: 15vw;
     display: grid;
     place-items: center;
     transition: 0.6s all ease-in-out;

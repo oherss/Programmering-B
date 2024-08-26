@@ -8,11 +8,11 @@ function setup(){
     pages = selectAll(".Page");
     menuitems = selectAll(".menuitem");
     totalPages = pages.length-1;
-    switchPage(0);
+    switchPage(currentPage);
 
     for(m of menuitems){
-        let pnum =m.elt.id.slice(-1) - 1;
-        m.mousePressed(switchPage(pnum))
+        let pnum = m.elt.id.slice(-1) - 1;
+        m.mouseClicked(()=>{switchPage(pnum);});
     }
 }
 
