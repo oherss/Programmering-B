@@ -10,12 +10,12 @@ body{
 
 header{
     width: 100vw;
-    height: 12vh;
+    height: 8vh;
     position: fixed;
     z-index: 2;
     background-color: lightblue;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 16rem);
 }
 header#leftMenu{
     width: 15vw;
@@ -26,7 +26,7 @@ header#leftMenu{
 .menuitem{
     width: 100%;
     height: 100%;
-    font-size: 4rem;
+    font-size: 2rem;
     display: grid;
     place-items: center;
     border-bottom: 1px solid black;
@@ -38,34 +38,48 @@ header#leftMenu{
 }
 .Page{
     position: fixed;
-    top: 0;
+    top: 8vh;
     left:-100vw;
     background-color: #012e56;
     background-attachment:fixed;
     background-position:50% 0%;
     background-repeat:no-repeat;
-    width: 85vw;
-    height: 100vh;
-    margin-left: 15vw;
+    width: 100vw;
+    height: 92vh;
+    /*margin-left: 15vw;*/
     display: grid;
     place-items: center;
     transition: 0.6s all ease-in-out;
 }
 h1{
-    color: #ECB237;
+    color: #000000;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 h2{
-    color: #ECB237;
+    color: #2b2b2b;
+    font-family: Raleway;
+}
+h3{
+    color: #2b2b2b;
     font-family: Raleway;
 }
 
 .visible{
     left: 0;
 }
+.TwoParted{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.LeftSide{
+/*Class for a left-aligned element*/
+}
+.RightSide{
+/*Class for a right-aligned element*/
+}
 
 #Page1{
-    background-color: #012e56;
+    background-color: #f7b9ff;
 }
 #Page2{
     background-color: #87F2E3;

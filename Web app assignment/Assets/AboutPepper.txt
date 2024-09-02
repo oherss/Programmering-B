@@ -1,0 +1,2 @@
+{"id":"PepperFacts","pageid":"Page2","name":"Facts about Pepper","text":" - Pepper's real name is Jared Clark <br> - He was born in Arizona in January 29, 1991"}
+{"id":"PepperCons","pageid":"Page2","name":"Conventions attended","text":" - Pepper's real name is Jared Clark <br> - He was born in Arizona in January 29, 1991"}
