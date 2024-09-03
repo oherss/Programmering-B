@@ -1,2 +1,2 @@
 {"id":"PepperFacts","pageid":"Page2","name":"Facts about Pepper","text":" - Pepper's real name is Jared Clark <br> - He was born in Arizona in January 29, 1991"}
-{"id":"PepperCons","pageid":"Page2","name":"Conventions attended","text":" - Pepper's real name is Jared Clark <br> - He was born in Arizona in January 29, 1991"}
+{"id":"PepperCons","pageid":"Page2","name":"Conventions attended","text":" - Anthrocon - 2015, 2016, 2018, 2019, 2022, 2023 <br> - Anthrohio - 2018, 2019 <br> - Arizona Fur Con - 2015, 2019 <br> - Anthro Northwest - 2021, 2024 <br> - Anthro Weekend Utah - 2019, 2022"}

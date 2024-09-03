@@ -46,7 +46,6 @@ header#leftMenu{
     background-repeat:no-repeat;
     width: 100vw;
     height: 92vh;
-    /*margin-left: 15vw;*/
     display: grid;
     place-items: center;
     transition: 0.6s all ease-in-out;
@@ -70,12 +69,6 @@ h3{
 .TwoParted{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-}
-.LeftSide{
-/*Class for a left-aligned element*/
-}
-.RightSide{
-/*Class for a right-aligned element*/
 }
 
 #Page1{
