@@ -6,6 +6,7 @@ let sources = [];
 let menuitems;
 let totalPages;
 let currentPage = 0;
+let collectionModel;
 
 function preload(){
     AboutPepper = loadStrings("./Assets/AboutPepper.txt")
@@ -13,10 +14,24 @@ function preload(){
 }
 
 function setup(){
+
+    fetchCollection("collection name").then( d => {
+        collectionModel = d
+        console.log(collectionModel)
+        //change properties
+        collectionModel['Mandag']['transport'] = 32
+        //update or create docs 
+        //createDocument('collection name', collectionModel['Mandag'], 'Tirsdag')
+        //updateDocument('collection name', collectionModel['Mandag'], 'Mandag')
+    })
+
     pages = selectAll(".Page");
     let TempText = selectAll("p")
     menuitems = selectAll(".menuitem");
     
+
+
+
     totalPages = pages.length-1;
     switchPage(currentPage);
 
