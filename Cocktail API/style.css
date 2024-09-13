@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+canvas {
+  display: block;
+}
+.page{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  place-items: center;
+}
