@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P5 web template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="libraries/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js" integrity="sha512-lvddmeF7aHRJwdbJeYThWd5kWSjTrXBzCRF/jYROiHzmhMJ1dEXfGH5Q7ft0yhizXTopAETG03s5ajTflauijA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="index.js"></script>
+</head>
+<body>
+    <header>
+        <div class="menuitem" id="menu1">Forside</div>
+        <div class="menuitem" id="menu2">Cocktail REST API</div>
+        <div class="menuitem" id="menu3">Lokal JSON</div>
+        <div class="menuitem" id="menu4">Side 4</div>
+    </header>
+
+    <div class="page" id="page1">
+        <div class="left">
+            <div class="'container">
+                <h1>Cocktails</h1>
+                <p>The Cocktails DB er et simpelt REST API, som gør det muligt at hente forslag til cocktails med opskrifter, ingredienser og billeder.</p>    
+                <p>På side to finder du altid en random cocktail - frisk fra API'et</p>
+            </div>
+        </div>        
+        <div class="right">Her skal der måske være et billede eller noget</div>
+    </div>
+    <div class="page" id="page2">
+       
+        <div class="left">
+            <h1 id="DrinkName">Drink</h1>
+            <h3 id="SubTitle"></h3>
+            <img id="DrinkImg" src="" alt="Drink image here">
+          </div>
+          <div class="right">
+            <h1>Ingredients:</h1>
+            <h3 id="Ingredients"></h3>
+            <h1>Glass:</h1>
+            <h3 id="glass"></h3>
+            <h1>Instructions:</h1>
+            <h3 id="Instructions" style="width: 30vw;"></h3>
+          </div>
+
+    </div>
+    <div class="page" id="page3">
+        <div class="left">
+            <h1>Lokal JSON fil</h1>
+            <p>Til højre kan vores JSON data ses</p>
+        </div>
+        <div class="right" id="localData">
+
+        </div>
+    </div>
+    <div class="page" id="page4">
+        <div class="left">
+            <h1>Side 4</h1>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
