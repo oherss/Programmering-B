@@ -16,9 +16,10 @@
 <body>
     <header>
         <div class="menuitem" id="menu1">Forside</div>
-        <div class="menuitem" id="menu2">Cocktail REST API</div>
+        <div class="menuitem" id="menu2">Random Cocktail</div>
         <div class="menuitem" id="menu3">Lokal JSON</div>
         <div class="menuitem" id="menu4">Side 4</div>
+        <div class="menuitem" id="menu5">Cocktail Search</div>
     </header>
 
     <div class="page" id="page1">
@@ -36,7 +37,13 @@
         <div class="left">
             <h1 id="DrinkName">Drink</h1>
             <h3 id="SubTitle"></h3>
+            <button id="DrinkSearchBut">Go to Search</button>
             <img id="DrinkImg" src="" alt="Drink image here">
+                <div style="grid-template-rows: repeat(3, 16rem);">
+                    <p id="DrinkIDT" style="font-size: 1rem;">Drink ID:</p>
+                    <input id="DrinkIDInp" type="number" placeholder="Drink ID here">
+                    <button id="DrinkIDBut">Go to drink ID</button>
+                </div>
           </div>
           <div class="right">
             <h1>Ingredients:</h1>
@@ -62,6 +69,16 @@
             <h1>Side 4</h1>
         </div>
         <div class="right"></div>
+    </div>
+    <div class="page" id="page5">
+        <div class="left">
+            <h1>Search for cocktails</h1>
+            <div style="grid-template-rows: repeat(2,10rem);">
+                 <input id="SearchDrinkNameInput" type="text" placeholder="Drink name">
+                 <button id="SearchDrinkNameButton">Search</button>
+            </div>
+        </div>
+        <div class="right" id="DrinkList"></div>
     </div>
 </body>
 </html>
