@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-test",
+  "version": "1.0.0",
+  "description": "First project",
+  "main": "Index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sproxxy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}

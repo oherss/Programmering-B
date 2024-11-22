@@ -8,6 +8,7 @@
 ./BudgetBuddy2.0(backup)
 ./Cocktail API
 ./Exam programming class c-level
+./FETCH
 ./Instrument med M5
 ./JSON 1
 ./JSON 2
@@ -16,6 +17,10 @@
 ./Loops opgave
 ./Loops opgave 2
 ./M5 mqtt template
+./mqtt-vs-code
+./NodeJS test
+./node_modules
+./OOP Intro
 ./Paintprogram
 ./Web app assignment
 ./Web template 01

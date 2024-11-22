@@ -7,9 +7,7 @@ p{
     font-size: 2rem;
 }
 
-h2.ListItem{
-   
-}
+
 div.ListItem{
     display: grid;
     grid-template-columns: 6rem 30rem 6rem;
@@ -84,6 +82,38 @@ header.hidden:hover .menuitem{
     grid-template-columns: 1fr 1fr;
     transition: 0.3s 0.3s all ease-in-out;
 }
+.post{
+    width: 20rem;
+    height:20rem;
+    border:1px solid gray;
+    border-radius:1rem;
+    padding:1rem;
+    display:grid;
+    place-items:center;
+    background-size: cover;
+    position:relative;
+}
+.post h2{
+    color:whitesmoke;
+    font-size:1.5rem;
+    font-weight:bold;
+    /* Styling af overskriften i hvert indlæg */
+}
+.post .author{
+    position:absolute;
+    right:1rem;
+    top:1rem;
+    color:dodgerblue;
+    width:80%;
+    padding-right:.8rem;
+    background-color:black;
+    display:grid;
+    text-align: right;
+    border-radius:1rem;
+    /* Positionerer forfatterens navn øverst til højre i indlægget:
+       - 'position:absolute' placerer elementet i forhold til .post.
+       - 'display:grid' bruges her til nemt at centrere eller justere indholdet inden i forfatterfeltet. */
+}
 
 .visible{
     left:0;
@@ -99,10 +129,23 @@ header.hidden:hover .menuitem{
     background-size: cover;
 }
 
+
+
 .left{
     background-color:whitesmoke;
 }
 
+
+.right #page4{
+    background-size: cover;
+    height:100%;
+    padding:5vw;
+    display:grid;
+    width:100%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap:2rem;
+    overflow:scroll;
+}
 
 #page1{
     background-color: lightskyblue;
