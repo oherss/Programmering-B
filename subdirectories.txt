@@ -6,6 +6,7 @@
 ./BudgetBuddy
 ./BudgetBuddy2.0
 ./BudgetBuddy2.0(backup)
+./Clock Class
 ./Cocktail API
 ./Exam programming class c-level
 ./FETCH

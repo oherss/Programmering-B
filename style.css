@@ -6,3 +6,16 @@ html, body {
 canvas {
   display: block;
 }
+
+.MainDiv{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.Link{
+  border: 1px black;
+  font-size: 2rem;
+  padding: 10px;
+  height: 3rem;
+  place-items: center;
+
+}
