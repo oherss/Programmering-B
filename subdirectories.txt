@@ -1,6 +1,7 @@
 ./01- github
 ./02 - css & html
 ./04_data
+./13_OOP_Template
 ./API Templates collection
 ./Breakout
 ./BudgetBuddy
@@ -22,6 +23,7 @@
 ./NodeJS test
 ./node_modules
 ./OOP Intro
+./OOP_Calendar
 ./Paintprogram
 ./Web app assignment
 ./Web template 01
