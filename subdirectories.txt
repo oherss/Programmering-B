@@ -25,5 +25,7 @@
 ./OOP Intro
 ./OOP_Calendar
 ./Paintprogram
+./Ptyhon01
+./SOP
 ./Web app assignment
 ./Web template 01
