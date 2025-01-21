@@ -17,7 +17,7 @@ def bresenham(x0, y0, x1, y1, width, height):
     """
 
     # Initialize the output matrix with zeros
-    matrix = [[0 for _ in range(width)] for _ in range(height)]
+    matrix = [[1 for _ in range(width)] for _ in range(height)]
 
     # Calculate the differences in x and y coordinates
     dx = abs(x1 - x0)
@@ -35,7 +35,7 @@ def bresenham(x0, y0, x1, y1, width, height):
         # Check if the current point is within the matrix bounds
         if 0 <= x0 < width and 0 <= y0 < height:
             # Mark the current point as part of the line
-            matrix[y0][x0] = 1
+            matrix[y0][x0] = 0
 
         # Check if we've reached the end of the line
         if x0 == x1 and y0 == y1:
@@ -57,19 +57,14 @@ def bresenham(x0, y0, x1, y1, width, height):
     return matrix
 
 # Example usage:
-x0, y0 = 10, 40
-x1, y1 = 30, 25
+x0, y0 = 10, 30
+x1, y1 = 40, 15
 width, height = 50, 50
 matrix = bresenham(x0, y0, x1, y1, width, height)
 
-#x0, y0 = 30, 25
-#x1, y1 = 30, 40
-#width, height = 50, 50
-#matrix += bresenham(x0, y0, x1, y1, width, height)
-
 # Print the output matrix
 for row in matrix:
-    print(' '.join(['#' if cell else '.' for cell in row]))
+    print(' '.join(['.' if cell else '#' for cell in row]))
 
 # Create a Pillow image from the matrix
 img = Image.new('L', (width, height))

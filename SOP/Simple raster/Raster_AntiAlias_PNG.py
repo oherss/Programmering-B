@@ -54,8 +54,8 @@ def xiaolin_wu(x0, y0, x1, y1, width, height):
     return matrix
 
 # Example usage:
-x0, y0 = 10, 40
-x1, y1 = 30, 25
+x0, y0 = 10, 30
+x1, y1 = 40, 15
 width, height = 50, 50
 matrix = xiaolin_wu(x0, y0, x1, y1, width, height)
 

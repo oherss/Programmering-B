@@ -1,3 +1,5 @@
+from PIL import Image
+
 def xiaolin_wu(x0, y0, x1, y1, width, height):
     """
     Rasterize a line using Xiaolin Wu's line algorithm with anti-aliasing.
@@ -13,9 +15,8 @@ def xiaolin_wu(x0, y0, x1, y1, width, height):
     Returns:
     list: A 2D list representing the rasterized line as a matrix.
     """
-
-    # Initialize the output matrix with zeros
-    matrix = [[0.0 for _ in range(width)] for _ in range(height)]
+    # Initialize the output matrix with ones (white background)
+    matrix = [[1.0 for _ in range(width)] for _ in range(height)]
 
     # Calculate the differences in x and y coordinates
     dx = x1 - x0
@@ -36,14 +37,17 @@ def xiaolin_wu(x0, y0, x1, y1, width, height):
             fraction_y = y - int(y)
 
             # Assign the intensity to the current pixel and its adjacent pixels
+            # Anti-aliasing the pixel on the line itself
             if 0 <= int(x) < width and 0 <= int(y) < height:
-                matrix[int(y)][int(x)] = max(matrix[int(y)][int(x)], 1.0 - max(fraction_x, fraction_y))
+                matrix[int(y)][int(x)] = min(matrix[int(y)][int(x)], 1.0 - max(fraction_x, fraction_y))
+            
+            # Assign the intensity to the adjacent pixels
             if 0 <= int(x) + 1 < width and 0 <= int(y) < height:
-                matrix[int(y)][int(x) + 1] = max(matrix[int(y)][int(x) + 1], fraction_x)
+                matrix[int(y)][int(x) + 1] = min(matrix[int(y)][int(x) + 1], fraction_x)
             if 0 <= int(x) < width and 0 <= int(y) + 1 < height:
-                matrix[int(y) + 1][int(x)] = max(matrix[int(y) + 1][int(x)], fraction_y)
+                matrix[int(y) + 1][int(x)] = min(matrix[int(y) + 1][int(x)], fraction_y)
             if 0 <= int(x) + 1 < width and 0 <= int(y) + 1 < height:
-                matrix[int(y) + 1][int(x) + 1] = max(matrix[int(y) + 1][int(x) + 1], fraction_x * fraction_y)
+                matrix[int(y) + 1][int(x) + 1] = min(matrix[int(y) + 1][int(x) + 1], fraction_x * fraction_y)
 
         # Move to the next point on the line
         x += x_step
@@ -52,18 +56,24 @@ def xiaolin_wu(x0, y0, x1, y1, width, height):
     return matrix
 
 # Example usage:
-x0, y0 = 10, 40
-x1, y1 = 30, 25
+x0, y0 = 10, 30
+x1, y1 = 40, 18
 width, height = 50, 50
 matrix = xiaolin_wu(x0, y0, x1, y1, width, height)
 
-# Print the output matrix
-for row in matrix:
-    print(' '.join([
-        '#' if cell > 0.9 else
-        '*' if cell > 0.7 else
-        '/' if cell > 0.5 else
-        '-' if cell > 0.3 else
-        '.' if cell > 0.1 else
-        ' ' for cell in row
-    ]))
+# Create a Pillow image from the matrix
+img = Image.new('L', (width, height))
+pixels = img.load()
+
+# Iterate over the matrix and assign the pixel values
+for y in range(height):
+    for x in range(width):
+        # Invert intensity: we want the line to be black and the background white
+        # The intensity is between 0 (black) and 1 (white), so we invert it
+        intensity = int((1.0 - matrix[y][x]) * 255)
+        pixels[x, y] = intensity
+
+# Save the image as a PNG file
+img.save('line.png')
+
+print("Image saved as line.png")
